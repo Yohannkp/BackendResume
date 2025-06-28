@@ -3,6 +3,7 @@ import os
 from google.cloud import speech
 from fpdf import FPDF
 from dotenv import load_dotenv
+import uvicorn
 
 app = Flask(__name__)
 
@@ -62,5 +63,6 @@ def transcribe_audio():
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  # Railway définit dynamiquement le port
+    uvicorn.run(app, host="", port=port)

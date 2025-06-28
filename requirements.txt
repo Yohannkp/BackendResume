@@ -1,0 +1,5 @@
+flask
+fpdf
+google-cloud-speech
+python-dotenv
+uvicorn
