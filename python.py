@@ -2,11 +2,14 @@ from flask import Flask, request, send_file
 import os
 from google.cloud import speech
 from fpdf import FPDF
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+load_dotenv()
+
 # Configurez votre clé d'API Google Cloud
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'AIzaSyD-8HFCa-QPWXpjFmFE-o6nlka-0_sBfxU'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe_audio():
